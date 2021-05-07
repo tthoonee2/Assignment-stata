@@ -1,0 +1,35 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Documenti\ASSIGNMENT\mylog.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 5 May 2021, 16:23:18
+
+{com}. help(rename)
+
+. rename frprtpl G1
+{res}
+{com}. tab G1
+
+   {txt}Political {c |}
+   system in {c |}
+     country {c |}
+     ensures {c |}
+    everyone {c |}
+ fair chance {c |}
+          to {c |}
+ participate {c |}
+     in poli {c |}      Freq.     Percent        Cum.
+{hline 13}{c +}{hline 35}
+  Not at all {c |}{res}      4,227       12.41       12.41
+{txt} Very little {c |}{res}      9,698       28.47       40.89
+{txt}        Some {c |}{res}     12,272       36.03       76.92
+{txt}       A lot {c |}{res}      6,488       19.05       95.97
+{txt}A great deal {c |}{res}      1,373        4.03      100.00
+{txt}{hline 13}{c +}{hline 35}
+       Total {c |}{res}     34,058      100.00
+
+{com}. save "D:\Documenti\ASSIGNMENT\databasemod.dta"
+{txt}file D:\Documenti\ASSIGNMENT\databasemod.dta saved
+
+{com}. exit
