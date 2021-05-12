@@ -75,11 +75,8 @@ bysort ducountry gndr_r: pwcorr depindex independix, sig
 
 
 
- regress prlvloppcn pltrtnps ducountry agea gndr  eduyrs
-
-
-
-
+regress prlvloppcn pltrtnps ducountry agea du_gndr  eduyrs
+regress prlvloppcn pltrtnps agea du_gndr eduyrs
 
 /*
 regress prlvloppcn pltrtnps
