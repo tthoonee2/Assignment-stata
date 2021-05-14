@@ -19,7 +19,7 @@ to do so I create the additive index pltrtnps
 */
 
 
-recode 
+
 gen pltrtnps = G1 + G2 + G3 
 *indep value
 
@@ -44,7 +44,7 @@ recode country (12=0 "Hungary") (1/11 = 1 "Rest of Europe")  (13/19 = 1 "Rest of
 /*should we substute the missing values with 0 ???### NO!!!
 
 *mean comparison deve venire, prima id fare qualsiasi altra operazione 
-
+*/
 ttest prlvloppcn, by(ducountry) unequal
 
 *variables are ought to be analyzed
@@ -67,16 +67,16 @@ tab gndr_r
 
 *compute the mean at the level of the sample:
 mean pltrtnps, over(ducountry)
-bysort(ducountry) : pwcorr depindex independix, sig
-bysort ducountry gndr_r: pwcorr depindex independix, sig
+bysort ducountry : pwcorr prlvloppcn pltrtnps, sig
+bysort ducountry gndr_r: pwcorr prlvloppcn pltrtnps, sig
 /*la donna e allineata a livello europeo*/
 
 
 
 
 
-regress prlvloppcn pltrtnps ducountry agea du_gndr  eduyrs
-regress prlvloppcn pltrtnps agea du_gndr eduyrs
+regress prlvloppcn pltrtnps ducountry agea gndr_r  eduyrs
+regress prlvloppcn pltrtnps agea gndr_r eduyrs
 
 /*
 regress prlvloppcn pltrtnps
