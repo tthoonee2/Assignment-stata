@@ -1,0 +1,466 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\utente\Documenti\GitHub\Assignment-stata\secondlog.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}14 May 2021, 19:04:31
+
+{com}. mean indep_pl, over(du_country)
+{err}variable {bf}du_country{sf} not found
+invalid over() option
+{txt}{search r(111), local:r(111);}
+
+{com}. mean indep_pl, over(ducountry)
+{res}
+{txt}Mean estimation{col 43}Number of obs{col 59}= {res}    33,132
+
+{txt}{hline 21}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 22}{c |}       Mean{col 34}   Std. Err.{col 46}     [95% Con{col 59}f. Interval]
+{hline 21}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+c.indep_pl@ducountry {c |}
+{space 12}Hungary  {c |}{col 22}{res}{space 2} 6.941883{col 34}{space 2} .0718955{col 45}{space 5} 6.800965{col 59}{space 3}   7.0828
+{txt}{space 5}Rest of Europe  {c |}{col 22}{res}{space 2} 7.770421{col 34}{space 2} .0137557{col 45}{space 5} 7.743459{col 59}{space 3} 7.797382
+{txt}{hline 21}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. ttest indep_pl  ducountry unequal
+{err}variable {bf}unequal{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. ttest indep_pl  ducountry,unequal
+{err}too many variables specified
+{txt}{search r(103), local:r(103);}
+
+{com}. ttest indep_pl, ducountry unequal
+{err}option {bf:ducountry} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. ttest indep_pl , by(ducountry
+{err}) required
+{txt}{search r(100), local:r(100);}
+
+{com}. ttest indep_pl, ducountry unequal
+{err}option {bf:ducountry} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. ttest indep_pl , by(ducountry) unequal
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+ Hungary {c |}{res}{col 12}  1,583{col 22} 6.941883{col 34} .0718955{col 46}   2.8605{col 58} 6.800862{col 70} 7.082903
+ {txt}Rest of {c |}{res}{col 12} 31,549{col 22} 7.770421{col 34} .0137557{col 46} 2.443297{col 58} 7.743459{col 70} 7.797382
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12} 33,132{col 22} 7.730834{col 34} .0135759{col 46} 2.471116{col 58} 7.704225{col 70} 7.757444
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.8285381{col 34} .0731996{col 58}-.9721089{col 70}-.6849673
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}Hungary{txt}) - mean({res}Rest of{txt})                          t = {res}-11.3189
+{txt}Ho: diff = 0                     Satterthwaite's degrees of freedom = {res} 1699.83
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+
+{com}. mean dep_pr , over(ducountry)
+{res}
+{txt}Mean estimation{col 41}Number of obs{col 57}= {res}    33,331
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 20}{c |}       Mean{col 32}   Std. Err.{col 44}     [95% Con{col 57}f. Interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+c.dep_pr@ducountry {c |}
+{space 10}Hungary  {c |}{col 20}{res}{space 2} 21.91304{col 32}{space 2} .2316503{col 43}{space 5}   21.459{col 57}{space 3} 22.36709
+{txt}{space 3}Rest of Europe  {c |}{col 20}{res}{space 2} 25.14358{col 32}{space 2} .0555476{col 43}{space 5}  25.0347{col 57}{space 3} 25.25245
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. ttest indep_pl, by(ducountry) unequal
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+ Hungary {c |}{res}{col 12}  1,583{col 22} 6.941883{col 34} .0718955{col 46}   2.8605{col 58} 6.800862{col 70} 7.082903
+ {txt}Rest of {c |}{res}{col 12} 31,549{col 22} 7.770421{col 34} .0137557{col 46} 2.443297{col 58} 7.743459{col 70} 7.797382
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12} 33,132{col 22} 7.730834{col 34} .0135759{col 46} 2.471116{col 58} 7.704225{col 70} 7.757444
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.8285381{col 34} .0731996{col 58}-.9721089{col 70}-.6849673
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}Hungary{txt}) - mean({res}Rest of{txt})                          t = {res}-11.3189
+{txt}Ho: diff = 0                     Satterthwaite's degrees of freedom = {res} 1699.83
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+
+{com}. ttest dep_pr , by(ducountry) unequal
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+ Hungary {c |}{res}{col 12}  1,564{col 22} 21.91304{col 34} .2316503{col 46} 9.161178{col 58} 21.45867{col 70} 22.36742
+ {txt}Rest of {c |}{res}{col 12} 31,767{col 22} 25.14358{col 34} .0555476{col 46} 9.900414{col 58}  25.0347{col 70} 25.25245
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12} 33,331{col 22} 24.99199{col 34} .0541742{col 46}  9.89046{col 58} 24.88581{col 70} 25.09817
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-3.230533{col 34} .2382172{col 58}-3.697754{col 70}-2.763313
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}Hungary{txt}) - mean({res}Rest of{txt})                          t = {res}-13.5613
+{txt}Ho: diff = 0                     Satterthwaite's degrees of freedom = {res} 1747.63
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+
+{com}. bysort ducountry gndr_r: pwcorr dep_pr indep_pl, sig
+
+{txt}{hline}
+-> ducountry = Hungary, gndr_r = female
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3591   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Hungary, gndr_r = male
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.4621   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Rest of Europe, gndr_r = female
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3517   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Rest of Europe, gndr_r = male
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3824   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{com}. pwcorr dep_pr indep_pl, sig
+
+             {txt}{c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3733   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{com}. pwcorr dep_pr eduyrs, sig
+
+             {txt}{c |}   dep_pr   eduyrs
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+      eduyrs {c |} {res}  0.1872   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{com}. pwcorr dep_pr agea, sig
+
+             {txt}{c |}   dep_pr     agea
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+        agea {c |} {res} -0.2060   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{com}. ttest dep_pr, by (ducountry) unequal
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+ Hungary {c |}{res}{col 12}  1,564{col 22} 21.91304{col 34} .2316503{col 46} 9.161178{col 58} 21.45867{col 70} 22.36742
+ {txt}Rest of {c |}{res}{col 12} 31,767{col 22} 25.14358{col 34} .0555476{col 46} 9.900414{col 58}  25.0347{col 70} 25.25245
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12} 33,331{col 22} 24.99199{col 34} .0541742{col 46}  9.89046{col 58} 24.88581{col 70} 25.09817
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-3.230533{col 34} .2382172{col 58}-3.697754{col 70}-2.763313
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}Hungary{txt}) - mean({res}Rest of{txt})                          t = {res}-13.5613
+{txt}Ho: diff = 0                     Satterthwaite's degrees of freedom = {res} 1747.63
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+
+{com}. tab ducountry , sum (dep_pr)
+
+  {txt}RECODE of {c |}
+    country {c |}          Summary of dep_pr
+  (Country) {c |}        Mean   Std. Dev.       Freq.
+{hline 12}{c +}{hline 36}
+    Hungary {c |}  {res} 21.913043   9.1611776       1,564
+  {txt}Rest of E {c |}  {res} 25.143577   9.9004141      31,767
+{txt}{hline 12}{c +}{hline 36}
+      Total {c |}  {res} 24.991989   9.8904605      33,331
+
+{com}. ttest dep_pr, by (gndr_r) unequal
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+  female {c |}{res}{col 12} 17,451{col 22} 24.52433{col 34} .0758502{col 46} 10.01998{col 58} 24.37565{col 70}   24.673
+    {txt}male {c |}{res}{col 12} 15,880{col 22} 25.50592{col 34} .0771374{col 46} 9.720541{col 58} 25.35472{col 70} 25.65712
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12} 33,331{col 22} 24.99199{col 34} .0541742{col 46}  9.89046{col 58} 24.88581{col 70} 25.09817
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.9815941{col 34} .1081824{col 58}-1.193636{col 70}-.7695528
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}female{txt}) - mean({res}male{txt})                              t = {res} -9.0735
+{txt}Ho: diff = 0                     Satterthwaite's degrees of freedom = {res} 33192.9
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+
+{com}. tab gndr_r,  sum (dep_pr)
+
+  {txt}RECODE of {c |}
+       gndr {c |}          Summary of dep_pr
+   (Gender) {c |}        Mean   Std. Dev.       Freq.
+{hline 12}{c +}{hline 36}
+     female {c |}  {res} 24.524325   10.019981      17,451
+  {txt}     male {c |}  {res} 25.505919   9.7205408      15,880
+{txt}{hline 12}{c +}{hline 36}
+      Total {c |}  {res} 24.991989   9.8904605      33,331
+
+{com}. regress dep_pr indep_pl eduyrs agea gndr_r ducountry
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    30,975
+{txt}{hline 13}{c +}{hline 34}   F(5, 30969)     = {res}  1420.89
+{txt}       Model {c |} {res} 545011.968         5  109002.394   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2375766.39    30,969  76.7143397   {txt}R-squared       ={res}    0.1866
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1865
+{txt}       Total {c |} {res} 2920778.35    30,974   94.297745   {txt}Root MSE        =   {res} 8.7587
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      dep_pr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}indep_pl {c |}{col 14}{res}{space 2} 1.372024{col 26}{space 2} .0205793{col 37}{space 1}   66.67{col 46}{space 3}0.000{col 54}{space 4} 1.331687{col 67}{space 3}  1.41236
+{txt}{space 6}eduyrs {c |}{col 14}{res}{space 2} .2572728{col 26}{space 2} .0130866{col 37}{space 1}   19.66{col 46}{space 3}0.000{col 54}{space 4} .2316225{col 67}{space 3}  .282923
+{txt}{space 8}agea {c |}{col 14}{res}{space 2}-.0885491{col 26}{space 2} .0027894{col 37}{space 1}  -31.75{col 46}{space 3}0.000{col 54}{space 4}-.0940164{col 67}{space 3}-.0830819
+{txt}{space 6}gndr_r {c |}{col 14}{res}{space 2} .4803655{col 26}{space 2} .0998346{col 37}{space 1}    4.81{col 46}{space 3}0.000{col 54}{space 4} .2846857{col 67}{space 3} .6760454
+{txt}{space 3}ducountry {c |}{col 14}{res}{space 2} 1.756455{col 26}{space 2} .2341661{col 37}{space 1}    7.50{col 46}{space 3}0.000{col 54}{space 4}  1.29748{col 67}{space 3}  2.21543
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.56496{col 26}{space 2} .3512637{col 37}{space 1}   38.62{col 46}{space 3}0.000{col 54}{space 4} 12.87647{col 67}{space 3} 14.25345
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. codebook aga
+{err}variable {bf}aga{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. codebook agea
+
+{txt}{hline}
+{res}agea{right:Age of respondent, calculated}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:agea}, but {res:76} nonmissing values are not labeled
+
+{col 18}range:  [{res}15{txt},{res}90{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}76{col 51}{txt}missing .:  {res}0{txt}/{res}36,015
+{col 8}{txt}unique mv codes:  {res}1{col 50}{txt}missing .*:  {res}167{txt}/{res}36,015
+
+{txt}{ralign 23: examples:}{col 26}{res}32{col 32}{txt}
+{ralign 23: }{col 26}{res}46{col 32}{txt}
+{ralign 23: }{col 26}{res}57{col 32}{txt}
+{ralign 23: }{col 26}{res}69{col 32}{txt}
+
+{com}. codebook eduyrs
+
+{txt}{hline}
+{res}eduyrs{right:Years of full-time education completed}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}byte{txt})
+{ralign 22:label}:  {res:eduyrs}, but {res:44} nonmissing values are not labeled
+
+{col 18}range:  [{res}0{txt},{res}51{txt}]{col 55}units:  {res}1
+{col 10}{txt}unique values:  {res}44{col 51}{txt}missing .:  {res}0{txt}/{res}36,015
+{col 8}{txt}unique mv codes:  {res}3{col 50}{txt}missing .*:  {res}505{txt}/{res}36,015
+
+{txt}{ralign 23: examples:}{col 26}{res}10{col 32}{txt}
+{ralign 23: }{col 26}{res}12{col 32}{txt}
+{ralign 23: }{col 26}{res}14{col 32}{txt}
+{ralign 23: }{col 26}{res}16{col 32}{txt}
+
+{com}. tab ducountryu
+{err}variable {bf}ducountryu{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. tab ducountry
+
+     {txt}RECODE of {c |}
+       country {c |}
+     (Country) {c |}      Freq.     Percent        Cum.
+{hline 15}{c +}{hline 35}
+       Hungary {c |}{res}      1,698        4.71        4.71
+{txt}Rest of Europe {c |}{res}     34,317       95.29      100.00
+{txt}{hline 15}{c +}{hline 35}
+         Total {c |}{res}     36,015      100.00
+
+{com}. mean ducountry
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}    36,015
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 3}ducountry {c |}{col 14}{res}{space 2}  .952853{col 26}{space 2} .0011169{col 37}{space 5} .9506639{col 51}{space 3} .9550421
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. regress dep_pr indep_pl eduyrs agea gndr_r ducountry
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    30,975
+{txt}{hline 13}{c +}{hline 34}   F(5, 30969)     = {res}  1420.89
+{txt}       Model {c |} {res} 545011.968         5  109002.394   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2375766.39    30,969  76.7143397   {txt}R-squared       ={res}    0.1866
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1865
+{txt}       Total {c |} {res} 2920778.35    30,974   94.297745   {txt}Root MSE        =   {res} 8.7587
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      dep_pr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}indep_pl {c |}{col 14}{res}{space 2} 1.372024{col 26}{space 2} .0205793{col 37}{space 1}   66.67{col 46}{space 3}0.000{col 54}{space 4} 1.331687{col 67}{space 3}  1.41236
+{txt}{space 6}eduyrs {c |}{col 14}{res}{space 2} .2572728{col 26}{space 2} .0130866{col 37}{space 1}   19.66{col 46}{space 3}0.000{col 54}{space 4} .2316225{col 67}{space 3}  .282923
+{txt}{space 8}agea {c |}{col 14}{res}{space 2}-.0885491{col 26}{space 2} .0027894{col 37}{space 1}  -31.75{col 46}{space 3}0.000{col 54}{space 4}-.0940164{col 67}{space 3}-.0830819
+{txt}{space 6}gndr_r {c |}{col 14}{res}{space 2} .4803655{col 26}{space 2} .0998346{col 37}{space 1}    4.81{col 46}{space 3}0.000{col 54}{space 4} .2846857{col 67}{space 3} .6760454
+{txt}{space 3}ducountry {c |}{col 14}{res}{space 2} 1.756455{col 26}{space 2} .2341661{col 37}{space 1}    7.50{col 46}{space 3}0.000{col 54}{space 4}  1.29748{col 67}{space 3}  2.21543
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.56496{col 26}{space 2} .3512637{col 37}{space 1}   38.62{col 46}{space 3}0.000{col 54}{space 4} 12.87647{col 67}{space 3} 14.25345
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. recode ducountry (1=0) (0=1)
+{txt}(ducountry: 36015 changes made)
+
+{com}. regress dep_pr indep_pl eduyrs agea gndr_r ducountry
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    30,975
+{txt}{hline 13}{c +}{hline 34}   F(5, 30969)     = {res}  1420.89
+{txt}       Model {c |} {res} 545011.968         5  109002.394   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2375766.39    30,969  76.7143397   {txt}R-squared       ={res}    0.1866
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1865
+{txt}       Total {c |} {res} 2920778.35    30,974   94.297745   {txt}Root MSE        =   {res} 8.7587
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      dep_pr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}indep_pl {c |}{col 14}{res}{space 2} 1.372024{col 26}{space 2} .0205793{col 37}{space 1}   66.67{col 46}{space 3}0.000{col 54}{space 4} 1.331687{col 67}{space 3}  1.41236
+{txt}{space 6}eduyrs {c |}{col 14}{res}{space 2} .2572728{col 26}{space 2} .0130866{col 37}{space 1}   19.66{col 46}{space 3}0.000{col 54}{space 4} .2316225{col 67}{space 3}  .282923
+{txt}{space 8}agea {c |}{col 14}{res}{space 2}-.0885491{col 26}{space 2} .0027894{col 37}{space 1}  -31.75{col 46}{space 3}0.000{col 54}{space 4}-.0940164{col 67}{space 3}-.0830819
+{txt}{space 6}gndr_r {c |}{col 14}{res}{space 2} .4803655{col 26}{space 2} .0998346{col 37}{space 1}    4.81{col 46}{space 3}0.000{col 54}{space 4} .2846857{col 67}{space 3} .6760454
+{txt}{space 3}ducountry {c |}{col 14}{res}{space 2}-1.756455{col 26}{space 2} .2341661{col 37}{space 1}   -7.50{col 46}{space 3}0.000{col 54}{space 4} -2.21543{col 67}{space 3} -1.29748
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 15.32141{col 26}{space 2} .2880279{col 37}{space 1}   53.19{col 46}{space 3}0.000{col 54}{space 4} 14.75687{col 67}{space 3} 15.88596
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. bysort ducountry gndr_r: pwcorr dep_pr indep_pl, sig
+
+{txt}{hline}
+-> ducountry = Hungary, gndr_r = female
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3517   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Hungary, gndr_r = male
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3824   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Rest of Europe, gndr_r = female
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.3591   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{hline}
+-> ducountry = Rest of Europe, gndr_r = male
+
+             {c |}   dep_pr indep_pl
+{hline 13}{c +}{hline 18}
+      dep_pr {c |} {res}  1.0000 
+             {txt}{c |}
+             {c |}
+    indep_pl {c |} {res}  0.4621   1.0000 
+             {txt}{c |}{res}   0.0000
+             {txt}{c |}
+
+{com}. mean ducountry
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}    36,015
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 3}ducountry {c |}{col 14}{res}{space 2}  .047147{col 26}{space 2} .0011169{col 37}{space 5} .0449579{col 51}{space 3} .0493361
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. tab ducountry
+
+     {txt}RECODE of {c |}
+       country {c |}
+     (Country) {c |}      Freq.     Percent        Cum.
+{hline 15}{c +}{hline 35}
+       Hungary {c |}{res}     34,317       95.29       95.29
+{txt}Rest of Europe {c |}{res}      1,698        4.71      100.00
+{txt}{hline 15}{c +}{hline 35}
+         Total {c |}{res}     36,015      100.00
+
+{com}. save "D:\utente\Documenti\GitHub\Assignment-stata\datababy.dta"
+{txt}file D:\utente\Documenti\GitHub\Assignment-stata\datababy.dta saved
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}D:\utente\Documenti\GitHub\Assignment-stata\secondlog.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}14 May 2021, 22:42:21
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

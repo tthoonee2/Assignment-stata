@@ -1,0 +1,1159 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   16.0   Copyright 1985-2019 StataCorp LLC
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     Special Edition                  College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+Unlimited-user Stata network license expires 30 Aug 2021:
+       Serial number:  401609206087
+         Licensed to:  Universita' Bocconi Milano
+                       Universita' Bocconi Milano
+
+Notes:
+      1.  Unicode is supported; see help unicode_advice.
+      2.  Maximum number of variables is set to 5000; see help set_maxvar.
+      3.  New update available; type -update all-
+
+. use "D:\utente\Documenti\GitHub\Assign
+> ment-stata\database.dta"
+
+. doedit "D:\utente\Documenti\GitHub\Ass
+> ignment-stata\todofileforeverything.do
+> "
+
+. do "C:\Users\Utente\AppData\Local\Temp
+> \STD392c_000000.tmp"
+
+. /*first thing we do is to rename the v
+> ariables of our interest to the specif
+> ied
+> name of the question 
+> rename frprtpl G1
+> rename gvintcz G2
+> rename poltran G3
+> rename ifredu G4
+> rename ifrjob G5
+> rename evfredu G6
+> rename evfrjob G7
+> PRIMO peso tolto, ora creiamo un addic
+> tive index*/
+. 
+. 
+. /*1.additive index --> indep_pl
+> questions G1, G2 and G3, that can be u
+> sed to obtain an additive index as a
+> measure of respondent’sperceived level
+>  of functioning of the national politi
+> cal
+> system
+> 
+> to do so I create the additive index i
+> ndep_pl
+> */
+. 
+. 
+. 
+. gen indep_pl = G1 + G2 + G3 
+(2,883 missing values generated)
+
+. *indep value
+. 
+. /*2.Additive index --> dep_pr
+> questions from G4 to G7, that can be u
+> sed to obtain an additive index as a m
+> easure of the respondent’sperceived le
+> vel of opportunities offered by the ow
+> n countr
+> */
+. 
+. gen dep_pr = G4 + G5 + G6 + G7   
+(2,684 missing values generated)
+
+. *dep value
+. 
+. *facciamo vedere che cosa c'è dentro:
+. 
+. tab dep_pr
+
+     dep_pr |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+          0 |        279        0.84    
+>     0.84
+          1 |         41        0.12    
+>     0.96
+          2 |         59        0.18    
+>     1.14
+          3 |         81        0.24    
+>     1.38
+          4 |        118        0.35    
+>     1.73
+          5 |        151        0.45    
+>     2.19
+          6 |        170        0.51    
+>     2.70
+          7 |        171        0.51    
+>     3.21
+          8 |        294        0.88    
+>     4.09
+          9 |        255        0.77    
+>     4.86
+         10 |        448        1.34    
+>     6.20
+         11 |        361        1.08    
+>     7.28
+         12 |        525        1.58    
+>     8.86
+         13 |        487        1.46    
+>    10.32
+         14 |        620        1.86    
+>    12.18
+         15 |        673        2.02    
+>    14.20
+         16 |        789        2.37    
+>    16.57
+         17 |        823        2.47    
+>    19.04
+         18 |        922        2.77    
+>    21.80
+         19 |        948        2.84    
+>    24.65
+         20 |      1,693        5.08    
+>    29.73
+         21 |      1,189        3.57    
+>    33.29
+         22 |      1,416        4.25    
+>    37.54
+         23 |      1,368        4.10    
+>    41.65
+         24 |      1,593        4.78    
+>    46.43
+         25 |      1,504        4.51    
+>    50.94
+         26 |      1,702        5.11    
+>    56.04
+         27 |      1,465        4.40    
+>    60.44
+         28 |      1,815        5.45    
+>    65.88
+         29 |      1,449        4.35    
+>    70.23
+         30 |      1,705        5.12    
+>    75.35
+         31 |      1,236        3.71    
+>    79.06
+         32 |      1,497        4.49    
+>    83.55
+         33 |      1,043        3.13    
+>    86.68
+         34 |        962        2.89    
+>    89.56
+         35 |        792        2.38    
+>    91.94
+         36 |        742        2.23    
+>    94.16
+         37 |        398        1.19    
+>    95.36
+         38 |        333        1.00    
+>    96.36
+         39 |        171        0.51    
+>    96.87
+         40 |        600        1.80    
+>    98.67
+         55 |          4        0.01    
+>    98.68
+         57 |          3        0.01    
+>    98.69
+         59 |          6        0.02    
+>    98.71
+         60 |          5        0.02    
+>    98.72
+         61 |          6        0.02    
+>    98.74
+         62 |          5        0.02    
+>    98.76
+         63 |         12        0.04    
+>    98.79
+         64 |          8        0.02    
+>    98.82
+         65 |         12        0.04    
+>    98.85
+         66 |         12        0.04    
+>    98.89
+         67 |         16        0.05    
+>    98.94
+         68 |         17        0.05    
+>    98.99
+         69 |         13        0.04    
+>    99.03
+         70 |         29        0.09    
+>    99.11
+         71 |         21        0.06    
+>    99.18
+         72 |         15        0.05    
+>    99.22
+         73 |         22        0.07    
+>    99.29
+         74 |         17        0.05    
+>    99.34
+         75 |         30        0.09    
+>    99.43
+         76 |         20        0.06    
+>    99.49
+         77 |         32        0.10    
+>    99.59
+         78 |         23        0.07    
+>    99.65
+         79 |         33        0.10    
+>    99.75
+         80 |         17        0.05    
+>    99.80
+         81 |         15        0.05    
+>    99.85
+         82 |         20        0.06    
+>    99.91
+         83 |          7        0.02    
+>    99.93
+         84 |          5        0.02    
+>    99.95
+         85 |         18        0.05    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     33,331      100.00
+
+. tab indep_pl
+
+   indep_pl |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+          3 |      2,204        6.65    
+>     6.65
+          4 |      1,379        4.16    
+>    10.81
+          5 |      2,272        6.86    
+>    17.67
+          6 |      4,968       14.99    
+>    32.67
+          7 |      4,138       12.49    
+>    45.16
+          8 |      4,705       14.20    
+>    59.36
+          9 |      5,948       17.95    
+>    77.31
+         10 |      3,183        9.61    
+>    86.92
+         11 |      2,221        6.70    
+>    93.62
+         12 |      1,403        4.23    
+>    97.85
+         13 |        444        1.34    
+>    99.19
+         14 |        170        0.51    
+>    99.71
+         15 |         97        0.29    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     33,132      100.00
+
+. 
+. *vediamo se vi è distinzione tra i pae
+> si:
+. 
+. *recoding di country:
+. recode country (12=0 "Hungary") (1/11 
+> = 1 "Rest of Europe")  (13/19 = 1 "Res
+> t of Europe") , gen (ducountry)
+variable ducountry already defined
+r(110);
+
+end of do-file
+
+r(110);
+
+. use "D:\utente\Documenti\GitHub\Assign
+> ment-stata\ORIGINAL.dta", clear
+
+. do "C:\Users\Utente\AppData\Local\Temp
+> \STD392c_000000.tmp"
+
+. /*first thing we do is to rename the v
+> ariables of our interest to the specif
+> ied
+> name of the question */
+. rename frprtpl G1
+
+. rename gvintcz G2
+
+. rename poltran G3
+
+. rename ifredu G4
+
+. rename ifrjob G5
+
+. rename evfredu G6
+
+. rename evfrjob G7
+
+. /*PRIMO peso tolto, ora creiamo un add
+> ictive index*/
+. 
+. 
+. /*1.additive index --> indep_pl
+> questions G1, G2 and G3, that can be u
+> sed to obtain an additive index as a
+> measure of respondent’sperceived level
+>  of functioning of the national politi
+> cal
+> system
+> 
+> to do so I create the additive index i
+> ndep_pl
+> */
+. 
+. 
+. 
+. gen indep_pl = G1 + G2 + G3 
+(2,883 missing values generated)
+
+. *indep value
+. 
+. /*2.Additive index --> dep_pr
+> questions from G4 to G7, that can be u
+> sed to obtain an additive index as a m
+> easure of the respondent’sperceived le
+> vel of opportunities offered by the ow
+> n countr
+> */
+. 
+. gen dep_pr = G4 + G5 + G6 + G7   
+(2,684 missing values generated)
+
+. *dep value
+. 
+. *facciamo vedere che cosa c'è dentro:
+. 
+. tab dep_pr
+
+     dep_pr |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+          0 |        279        0.84    
+>     0.84
+          1 |         41        0.12    
+>     0.96
+          2 |         59        0.18    
+>     1.14
+          3 |         81        0.24    
+>     1.38
+          4 |        118        0.35    
+>     1.73
+          5 |        151        0.45    
+>     2.19
+          6 |        170        0.51    
+>     2.70
+          7 |        171        0.51    
+>     3.21
+          8 |        294        0.88    
+>     4.09
+          9 |        255        0.77    
+>     4.86
+         10 |        448        1.34    
+>     6.20
+         11 |        361        1.08    
+>     7.28
+         12 |        525        1.58    
+>     8.86
+         13 |        487        1.46    
+>    10.32
+         14 |        620        1.86    
+>    12.18
+         15 |        673        2.02    
+>    14.20
+         16 |        789        2.37    
+>    16.57
+         17 |        823        2.47    
+>    19.04
+         18 |        922        2.77    
+>    21.80
+         19 |        948        2.84    
+>    24.65
+         20 |      1,693        5.08    
+>    29.73
+         21 |      1,189        3.57    
+>    33.29
+         22 |      1,416        4.25    
+>    37.54
+         23 |      1,368        4.10    
+>    41.65
+         24 |      1,593        4.78    
+>    46.43
+         25 |      1,504        4.51    
+>    50.94
+         26 |      1,702        5.11    
+>    56.04
+         27 |      1,465        4.40    
+>    60.44
+         28 |      1,815        5.45    
+>    65.88
+         29 |      1,449        4.35    
+>    70.23
+         30 |      1,705        5.12    
+>    75.35
+         31 |      1,236        3.71    
+>    79.06
+         32 |      1,497        4.49    
+>    83.55
+         33 |      1,043        3.13    
+>    86.68
+         34 |        962        2.89    
+>    89.56
+         35 |        792        2.38    
+>    91.94
+         36 |        742        2.23    
+>    94.16
+         37 |        398        1.19    
+>    95.36
+         38 |        333        1.00    
+>    96.36
+         39 |        171        0.51    
+>    96.87
+         40 |        600        1.80    
+>    98.67
+         55 |          4        0.01    
+>    98.68
+         57 |          3        0.01    
+>    98.69
+         59 |          6        0.02    
+>    98.71
+         60 |          5        0.02    
+>    98.72
+         61 |          6        0.02    
+>    98.74
+         62 |          5        0.02    
+>    98.76
+         63 |         12        0.04    
+>    98.79
+         64 |          8        0.02    
+>    98.82
+         65 |         12        0.04    
+>    98.85
+         66 |         12        0.04    
+>    98.89
+         67 |         16        0.05    
+>    98.94
+         68 |         17        0.05    
+>    98.99
+         69 |         13        0.04    
+>    99.03
+         70 |         29        0.09    
+>    99.11
+         71 |         21        0.06    
+>    99.18
+         72 |         15        0.05    
+>    99.22
+         73 |         22        0.07    
+>    99.29
+         74 |         17        0.05    
+>    99.34
+         75 |         30        0.09    
+>    99.43
+         76 |         20        0.06    
+>    99.49
+         77 |         32        0.10    
+>    99.59
+         78 |         23        0.07    
+>    99.65
+         79 |         33        0.10    
+>    99.75
+         80 |         17        0.05    
+>    99.80
+         81 |         15        0.05    
+>    99.85
+         82 |         20        0.06    
+>    99.91
+         83 |          7        0.02    
+>    99.93
+         84 |          5        0.02    
+>    99.95
+         85 |         18        0.05    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     33,331      100.00
+
+. tab indep_pl
+
+   indep_pl |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+          3 |      2,204        6.65    
+>     6.65
+          4 |      1,379        4.16    
+>    10.81
+          5 |      2,272        6.86    
+>    17.67
+          6 |      4,968       14.99    
+>    32.67
+          7 |      4,138       12.49    
+>    45.16
+          8 |      4,705       14.20    
+>    59.36
+          9 |      5,948       17.95    
+>    77.31
+         10 |      3,183        9.61    
+>    86.92
+         11 |      2,221        6.70    
+>    93.62
+         12 |      1,403        4.23    
+>    97.85
+         13 |        444        1.34    
+>    99.19
+         14 |        170        0.51    
+>    99.71
+         15 |         97        0.29    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     33,132      100.00
+
+. 
+. *vediamo se vi è distinzione tra i pae
+> si:
+. 
+. *recoding di country:
+. recode country (12=0 "Hungary") (1/11 
+> = 1 "Rest of Europe")  (13/19 = 1 "Res
+> t of Europe") , gen (ducountry)
+(33516 differences between country and d
+> ucountry)
+
+. 
+. 
+. /*should we substute the missing value
+> s with 0 ???### NO!!!
+> 
+> *mean comparison deve venire, prima id
+>  fare qualsiasi altra operazione 
+> */
+. ttest dep_pr, by(ducountry) unequal
+
+Two-sample t test with unequal variances
+----------------------------------------
+> --------------------------------------
+   Group |     Obs        Mean    Std. E
+> rr.                                   
+>       Std. Dev.                       
+>                   [95% Conf. Interval]
+---------+------------------------------
+> --------------------------------------
+ Hungary |   1,564    21.91304    .23165
+> 03                                    
+>       9.161178                        
+>                   21.45867            
+>                               22.36742
+ Rest of |  31,767    25.14358    .05554
+> 76                                    
+>       9.900414                        
+>                    25.0347            
+>                               25.25245
+---------+------------------------------
+> --------------------------------------
+combined |  33,331    24.99199    .05417
+> 42                                    
+>        9.89046                        
+>                   24.88581            
+>                               25.09817
+---------+------------------------------
+> --------------------------------------
+    diff |           -3.230533    .23821
+> 72                                    
+>                  -3.697754            
+>                              -2.763313
+----------------------------------------
+> --------------------------------------
+    diff = mean(Hungary) - mean(Rest of)
+>                           t = -13.5613
+Ho: diff = 0                     Sattert
+> hwaite's degrees of freedom =  1747.63
+
+    Ha: diff < 0                 Ha: dif
+> f != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|
+> ) = 0.0000          Pr(T > t) = 1.0000
+
+. 
+. *variables are ought to be analyzed
+. *totale pagine: 5
+. 
+. *control for eduyrs agea gndr
+. *fixing gndr:
+. 
+. recode gndr (2=0), gen(gndr_r)
+(19033 differences between gndr and gndr
+> _r)
+
+. tab gndr_r
+
+  RECODE of |
+       gndr |
+   (Gender) |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+          0 |     19,033       52.85    
+>    52.85
+          1 |     16,982       47.15    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     36,015      100.00
+
+. label define for_gndr 0 "female" 1 "ma
+> le"
+
+. label values gndr_r for_gndr
+
+. tab gndr_r
+
+  RECODE of |
+       gndr |
+   (Gender) |      Freq.     Percent    
+>     Cum.
+------------+---------------------------
+> --------
+     female |     19,033       52.85    
+>    52.85
+       male |     16,982       47.15    
+>   100.00
+------------+---------------------------
+> --------
+      Total |     36,015      100.00
+
+. 
+. 
+. 
+. *da fare box plot:
+. 
+. 
+. 
+. *compute the mean at the level of the 
+> sample:
+. mean indep_pl, over(ducountry)
+
+Mean estimation                         
+>   Number of obs                       
+>                   =     33,132
+
+----------------------------------------
+> ------------------------------
+                     |       Mean   Std.
+>  Err.                                 
+>           [95% Con                    
+>                   f. Interval]
+---------------------+------------------
+> ------------------------------
+c.indep_pl@ducountry |
+            Hungary  |   6.941883   .071
+> 8955                                  
+>           6.800965                    
+>                         7.0828
+     Rest of Europe  |   7.770421   .013
+> 7557                                  
+>           7.743459                    
+>                       7.797382
+----------------------------------------
+> ------------------------------
+
+. bysort ducountry : pwcorr dep_pr indep
+> _pl, sig
+
+----------------------------------------
+-> ducountry = Hungary
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.4028   1.0000 
+             |   0.0000
+             |
+
+----------------------------------------
+-> ducountry = Rest of Europe
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.3688   1.0000 
+             |   0.0000
+             |
+
+. bysort ducountry gndr_r: pwcorr dep_pr
+>  indep_pl, sig
+
+----------------------------------------
+-> ducountry = Hungary, gndr_r = female
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.3591   1.0000 
+             |   0.0000
+             |
+
+----------------------------------------
+-> ducountry = Hungary, gndr_r = male
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.4621   1.0000 
+             |   0.0000
+             |
+
+----------------------------------------
+-> ducountry = Rest of Europe, gndr_r = 
+> female
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.3517   1.0000 
+             |   0.0000
+             |
+
+----------------------------------------
+-> ducountry = Rest of Europe, gndr_r = 
+> male
+
+             |   dep_pr indep_pl
+-------------+------------------
+      dep_pr |   1.0000 
+             |
+             |
+    indep_pl |   0.3824   1.0000 
+             |   0.0000
+             |
+
+. /*la donna e allineata a livello europ
+> eo*/
+. 
+. 
+. 
+. 
+. 
+. regress dep_pr indep_pl ducountry agea
+>  gndr_r  eduyrs
+
+      Source |       SS           df    
+>    MS      Number of obs   =    30,975
+-------------+--------------------------
+> --------   F(5, 30969)     =   1420.89
+       Model |  545011.968         5  10
+> 9002.394   Prob > F        =    0.0000
+    Residual |  2375766.39    30,969  76
+> .7143397   R-squared       =    0.1866
+-------------+--------------------------
+> --------   Adj R-squared   =    0.1865
+       Total |  2920778.35    30,974   9
+> 4.297745   Root MSE        =    8.7587
+
+----------------------------------------
+> --------------------------------------
+      dep_pr |      Coef.   Std. Err.   
+>    t                                  
+>         P>|t|                         
+>                   [95% Con            
+>                           f. Interval]
+-------------+--------------------------
+> --------------------------------------
+    indep_pl |   1.372024   .0205793    
+> 66.67                                 
+>         0.000                         
+>                   1.331687            
+>                                1.41236
+   ducountry |   1.756455   .2341661    
+>  7.50                                 
+>         0.000                         
+>                    1.29748            
+>                                2.21543
+        agea |  -.0885491   .0027894   -
+> 31.75                                 
+>         0.000                         
+>                  -.0940164            
+>                              -.0830819
+      gndr_r |   .4803655   .0998346    
+>  4.81                                 
+>         0.000                         
+>                   .2846857            
+>                               .6760454
+      eduyrs |   .2572728   .0130866    
+> 19.66                                 
+>         0.000                         
+>                   .2316225            
+>                                .282923
+       _cons |   13.56496   .3512637    
+> 38.62                                 
+>         0.000                         
+>                   12.87647            
+>                               14.25345
+----------------------------------------
+> --------------------------------------
+
+. regress dep_pr indep_pl agea gndr_r ed
+> uyrs
+
+      Source |       SS           df    
+>    MS      Number of obs   =    30,975
+-------------+--------------------------
+> --------   F(4, 30970)     =   1758.90
+       Model |   540695.76         4   1
+> 35173.94   Prob > F        =    0.0000
+    Residual |  2380082.59    30,970    
+> 76.85123   R-squared       =    0.1851
+-------------+--------------------------
+> --------   Adj R-squared   =    0.1850
+       Total |  2920778.35    30,974   9
+> 4.297745   Root MSE        =    8.7665
+
+----------------------------------------
+> --------------------------------------
+      dep_pr |      Coef.   Std. Err.   
+>    t                                  
+>         P>|t|                         
+>                   [95% Con            
+>                           f. Interval]
+-------------+--------------------------
+> --------------------------------------
+    indep_pl |   1.382329   .0205517    
+> 67.26                                 
+>         0.000                         
+>                   1.342046            
+>                               1.422611
+        agea |  -.0883751   .0027917   -
+> 31.66                                 
+>         0.000                         
+>                  -.0938471            
+>                              -.0829032
+      gndr_r |   .4900583   .0999152    
+>  4.90                                 
+>         0.000                         
+>                   .2942203            
+>                               .6858962
+      eduyrs |   .2613032   .0130872    
+> 19.97                                 
+>         0.000                         
+>                   .2356517            
+>                               .2869546
+       _cons |   15.09066   .2866356    
+> 52.65                                 
+>         0.000                         
+>                   14.52884            
+>                               15.65247
+----------------------------------------
+> --------------------------------------
+
+. 
+. /*
+> regress dep_pr indep_pl
+> predict prediction
+> (option xb assumed; fitted values)
+> */
+. 
+end of do-file
+
+. codebook indep_pl
+
+------------------------------------------------------------------------------------------------------------------------
+indep_pl                                                                                                     (unlabeled)
+------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+
+                 range:  [3,15]                       units:  1
+         unique values:  13                       missing .:  2,883/36,015
+
+                  mean:   7.73083
+              std. dev:   2.47112
+
+           percentiles:        10%       25%       50%       75%       90%
+                                 4         6         8         9        11
+
+. graph box indep_pl
+
+. sum indep_pl
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+    indep_pl |     33,132    7.730834    2.471116          3         15
+
+. graph box indep_pl
+
+. sum dep_pr
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+      dep_pr |     33,331    24.99199     9.89046          0         85
+
+. help(sum)
+
+. sum dep_pr , d
+
+                           dep_pr
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            2              0
+ 5%           10              0
+10%           13              0       Obs              33,331
+25%           20              0       Sum of Wgt.      33,331
+
+50%           25                      Mean           24.99199
+                        Largest       Std. Dev.       9.89046
+75%           30             85
+90%           35             85       Variance       97.82121
+95%           37             85       Skewness        1.24212
+99%           69             85       Kurtosis       9.979987
+
+. codebook dep
+
+------------------------------------------------------------------------------------------------------------------------
+dep_pr                                                                                                       (unlabeled)
+------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+
+                 range:  [0,85]                       units:  1
+         unique values:  70                       missing .:  2,684/36,015
+
+                  mean:    24.992
+              std. dev:   9.89046
+
+           percentiles:        10%       25%       50%       75%       90%
+                                13        20        25        30        35
+
+. graph box depo
+variable depo not found
+r(111);
+
+. graph box dep_pr
+
+. hist dep_pr
+(bin=45, start=0, width=1.8888889)
+
+. mean dep_pr
+
+Mean estimation                   Number of obs   =     33,331
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      dep_pr |   24.99199   .0541742      24.88581    25.09817
+--------------------------------------------------------------
+
+. ttest dep_pr = 25
+
+One-sample t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  dep_pr |  33,331    24.99199    .0541742     9.89046    24.88581    25.09817
+------------------------------------------------------------------------------
+    mean = mean(dep_pr)                                           t =  -0.1479
+Ho: mean = 25                                    degrees of freedom =    33330
+
+    Ha: mean < 25               Ha: mean != 25                 Ha: mean > 25
+ Pr(T < t) = 0.4412         Pr(|T| > |t|) = 0.8824          Pr(T > t) = 0.5588
+
+. man indep_pl
+help for indep_pl not found
+
+. mean indep_pl
+
+Mean estimation                   Number of obs   =     33,132
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+    indep_pl |   7.730834   .0135759      7.704225    7.757444
+--------------------------------------------------------------
+
+. mean indep_pl, level(99)
+
+Mean estimation                   Number of obs   =     33,132
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [99% Conf. Interval]
+-------------+------------------------------------------------
+    indep_pl |   7.730834   .0135759      7.695863    7.765806
+--------------------------------------------------------------
+
+. mean indep_pl , level(90)
+
+Mean estimation                   Number of obs   =     33,132
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [90% Conf. Interval]
+-------------+------------------------------------------------
+    indep_pl |   7.730834   .0135759      7.708503    7.753165
+--------------------------------------------------------------
+
+. graph twoway rcap
+varlist required
+r(100);
+
+. graph twoway rcap indep_pl
+too few variables specified
+r(102);
+
+. ciplot
+command ciplot is unrecognized
+r(199);
+
+. ciplot indep_pl
+command ciplot is unrecognized
+r(199);
+
+. ssc
+ssc commands are
+    ssc new
+    ssc hot
+
+    ssc describe  pkgname
+    ssc describe  letter
+
+    ssc install   pkgname
+    ssc uninstall pkgname
+
+    ssc type      filename  (less used)
+    ssc copy      filename  (less used)
+see help ssc
+r(198);
+
+. ssc ciplot
+ssc: ciplot: invalid subcommand
+r(198);
+
+. ssc install ciplo
+ssc install: "ciplo" not found at SSC, type search ciplo
+(To find all packages at SSC that start with c, type ssc describe c)
+r(601);
+
+. ssc install ciplot
+checking ciplot consistency and verifying not already installed...
+installing into C:\Users\Utente\ado\plus\...
+installation complete.
+
+. ciplot indep_pl
+
+. ciplot indep_pl , level(90)
+
+. help(ciplot)
+
+. ciplot indep_pl, level(95)
+
+. ciplot indep_pl, level(99)
+
+. help(ciplot)
+
+. ciplot indep_pl, level(99) 9.5g%
+option 9.5g not allowed
+r(198);
+
+. ciplot indep_pl 9.5g%, level(99)
+factor-variable and time-series operators not allowed
+r(101);
+
+. ciplot indep_pl, level(99) dp(4)
+option dp() not allowed
+r(198);
+
+. ciplot indep_pl , level(99) dp4
+option dp4 not allowed
+r(198);
+
+. ciplot indep_pl , level(99) dp
+option dp not allowed
+r(198);
+
+. help(dp)
+
+. set dp(5)
+invalid syntax
+r(198);
+
+. set dp 9.9
+invalid syntax
+r(198);
+
+. set dp 9
+invalid syntax
+r(198);
+
+. ciplot indep_pl , level(90)
+
+. xsize must be between 1.000 and 20.000
+option epilog() not allowed
+r(198);
+xsize must be between 1.000 and 20.000
+xsize must be between 1.000 and 20.000
+option epilog() not allowed
+r(198);
+ciplot indep_pl , level(90) horizontal
+
+. ciplot indep_pl , level(95) horizontal
+
+. ciplot indep_pl , level(99) horizontal
+
+. mean dep_pr, level(95)
+
+Mean estimation                   Number of obs   =     33,331
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+      dep_pr |   24.99199   .0541742      24.88581    25.09817
+--------------------------------------------------------------
+
+. mean dep_pr, level(99)
+
+Mean estimation                   Number of obs   =     33,331
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [99% Conf. Interval]
+-------------+------------------------------------------------
+      dep_pr |   24.99199   .0541742      24.85244    25.13154
+--------------------------------------------------------------
+
+. help(mean)
+
+. mean dep_pr , level(90)
+
+Mean estimation                   Number of obs   =     33,331
+
+--------------------------------------------------------------
+             |       Mean   Std. Err.     [90% Conf. Interval]
+-------------+------------------------------------------------
+      dep_pr |   24.99199   .0541742      24.90288     25.0811
+--------------------------------------------------------------
+
+. log using "D:\utente\Documenti\GitHub\Assignment-stata\secondlog.smcl"
